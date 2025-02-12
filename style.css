@@ -1,37 +1,96 @@
 body{
-    background-color: #ffbbfa;
+    background-color: #ffeffe;
 }
 
 button{
   
-  color: rgb(179, 23, 23);
-  padding: 15px 32px;
+  transition-duration: 0.2s;
+  height: 200px;
+  width: 200px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
 }
 
 h1{
   text-align: center;
 }
 #boton1{
-  background-color: rgb(255, 62, 210);
-  border-radius: 10%;
+  background-color: rgb(255, 62, 62);
+  border-top-left-radius: 100%;
+  
+}
+
+#boton1:hover{
+  background-color: rgb(241, 29, 29);  
+}
+
+#boton1:active {
+  background-color: rgb(241, 29, 29);  
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
 
 #boton2{
   background-color: rgb(99, 206, 255);
+  border-top-right-radius: 100%;
+
+}
+
+#boton2:hover{
+  background-color: rgb(48, 180, 241);
+
+}
+
+#boton2:active {
+  background-color: rgb(48, 180, 241);
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
 
 #boton3{
   background-color: rgb(247, 255, 100);
-  margin-bottom: 10%;
+  border-bottom-left-radius: 100%;
+
+}
+
+#boton3:hover{
+  background-color: rgb(232, 241, 61);
+
+}
+
+#boton3:active {
+  background-color: rgb(232, 241, 61);
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
 
 #boton4{
   background-color: rgb(59, 255, 131);
+  border-bottom-right-radius: 100%;
+
+}
+
+#boton4:hover{
+  background-color: rgb(18, 255, 105);
+
+}
+
+#boton4:active {
+  background-color: rgb(18, 255, 105);
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+#box1{
+  display: flex;
+  flex-direction: row
+}
+
+#box2{
+  display: flex;
+  flex-direction: row
 }
 
 #container{
