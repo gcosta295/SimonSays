@@ -32,6 +32,12 @@
     </div>
 </div>
 
+<div id="container2">
+    <button id="giveUp"  onclick="showB();" >Give Up? :c</button>
+
+
+</div>
+
 <script type="text/javascript">
 
 const srcArr = ['sounds/drop.mp3', 'sounds/meow.mp3', 'sounds/lego.mp3', 'sounds/duolingo.mp3'];
@@ -89,14 +95,20 @@ function showB() {
   var x = document.getElementById("box1");
   var y = document.getElementById("box2");
   var z = document.getElementById("startb");
-  if (x.style.display === "none") {
+  var w = document.getElementById("giveUp");
+
+  if (z.style.display !== "none") {
     x.style.display = "flex";
     y.style.display = "flex";
     z.style.display = "none";
+    w.style.display = "flex";
+
   } else {
     x.style.display = "none";
     y.style.display = "none";
     z.style.display = "flex";
+    w.style.display = "none";
+
 
   }
 }
