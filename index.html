@@ -12,10 +12,13 @@
     <br>
     <br>
     <br>
-    
 
+
+
+ 
 
     <div id="container">
+        <button id="startb"  onclick="showB();" >Start!</button>
     <div id="box1">   
         <button id="boton1" onclick="playSound(0);">
             </button>
@@ -79,7 +82,25 @@ function game (PName, HPoints, PPoints, LNums, gameTF){
               }
           }
       }
+    }
+
+
+function showB() {
+  var x = document.getElementById("box1");
+  var y = document.getElementById("box2");
+  var z = document.getElementById("startb");
+  if (x.style.display === "none") {
+    x.style.display = "flex";
+    y.style.display = "flex";
+    z.style.display = "none";
+  } else {
+    x.style.display = "none";
+    y.style.display = "none";
+    z.style.display = "flex";
+
+  }
 }
+
 </script>
 
 </body>
