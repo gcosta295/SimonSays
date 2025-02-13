@@ -43,8 +43,11 @@
 const srcArr = ['sounds/drop.mp3', 'sounds/meow.mp3', 'sounds/lego.mp3', 'sounds/duolingo.mp3'];
 
 function playSound(num){
+    var use= num+1
     const audio = new Audio(srcArr[num]);
     audio.play();
+    const boton = document.getElementById("boton"+use)
+    applyActiveStyle(boton)
 }
 
 function start (){
