@@ -24,7 +24,6 @@ h1{
   width: 100px;
   justify-content: center;
   align-items: center;
-  display: inline-block;
   
 }
 
@@ -32,15 +31,10 @@ h1{
   background-color: rgb(106, 72, 218);
 }
 
-
 #giveUp{
-  background-color: rgb(172, 147, 255);
-  height: 50px;
-  width: 100px;
-  justify-content: center;
-  align-items: center;
   display: none;
 }
+
 #boton1{
   background-color: rgb(255, 70, 70);
   border-top-left-radius: 100%;
