@@ -18,7 +18,12 @@
  
 
     <div id="container">
-        <button id="startb"  onclick="showB();" >Start!</button>
+      <div id="container1">
+
+        <button id="startb" class="thing" onclick="setTimeout(() => { showB(); },500);  playSound(4);" >Start!</button>
+        <button id="rankb"  class="thing" onclick="showB();" >Ranking c:</button>
+      </div>
+
     <div id="box1">   
         <button id="boton1" onclick="playSound(0);">
             </button>
@@ -40,12 +45,16 @@
 
 <script type="text/javascript">
 
-const srcArr = ['sounds/drop.mp3', 'sounds/meow.mp3',  'sounds/lego.mp3', 'sounds/duolingo.mp3'];
+const srcArr = ['sounds/drop.mp3', 'sounds/meow.mp3', 'sounds/lego.mp3', 'sounds/duolingo.mp3', 'sounds/yoshi.mp3'];
+
 
 function playSound(num){
+    var use= num+1
     const audio = new Audio(srcArr[num]);
     audio.play();
     ClickInput = num;
+    const boton = document.getElementById("boton"+use)
+    applyActiveStyle(boton)
 }
 
 function start (){
@@ -86,12 +95,16 @@ function showB() {
   var x = document.getElementById("box1");
   var y = document.getElementById("box2");
   var z = document.getElementById("startb");
+  var q = document.getElementById("rankb");
+
   var w = document.getElementById("giveUp");
+
 
   if (z.style.display !== "none") {
     x.style.display = "flex";
     y.style.display = "flex";
     z.style.display = "none";
+    q.style.display = "none";
     w.style.display = "flex";
     setTimeout(function(){start()},1500);
 
@@ -99,6 +112,8 @@ function showB() {
     x.style.display = "none";
     y.style.display = "none";
     z.style.display = "flex";
+    q.style.display = "flex";
+
     w.style.display = "none";
 
 
