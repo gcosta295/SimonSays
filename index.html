@@ -82,18 +82,19 @@ function game (PName, HPoints, PPoints, LNums, gameTF){
             num = LNums[i];
             setTimeout(function(){window.alert("nums " + LNums)},500);
             var box = document.getElementById("container");
-            box.addEventListener("click", function compare(num, ClickInput){
-                if (num != ClickInput){
-                    gameTF=false;
-                }else{
-                    PPoints +=10;
-                }
-            });
+            box.addEventListener("click", compare);
             box.removeEventListener("click", compare);
           }
     }
 }
-    
+   
+function compare(num, ClickInput){
+    if (num != ClickInput){
+        gameTF=false;
+    }else{
+        PPoints +=10;
+    }
+}
 
 function showB() {
   var x = document.getElementById("box1");
