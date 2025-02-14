@@ -17,7 +17,8 @@ h1{
   text-align: center;
 }
 
-#startb{
+
+.thing{
   background-color: rgb(172, 147, 255);
   height: 50px;
   width: 100px;
@@ -26,6 +27,11 @@ h1{
   display: inline-block;
   
 }
+
+.thing:hover{
+  background-color: rgb(106, 72, 218);
+}
+
 
 #giveUp{
   background-color: rgb(172, 147, 255);
@@ -36,7 +42,7 @@ h1{
   display: none;
 }
 #boton1{
-  background-color: rgb(255, 62, 62);
+  background-color: rgb(255, 70, 70);
   border-top-left-radius: 100%;
   
 }
@@ -46,8 +52,8 @@ h1{
 }
 
 #boton1:active {
-  background-color: rgb(241, 29, 29);  
-  box-shadow: 0 5px #666;
+  background-color: rgb(233, 7, 7);  
+  box-shadow: 0 5px #353535;
   transform: translateY(4px);
 }
 
@@ -63,7 +69,7 @@ h1{
 }
 
 #boton2:active {
-  background-color: rgb(48, 180, 241);
+  background-color: rgb(48, 93, 241);
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
@@ -80,7 +86,7 @@ h1{
 }
 
 #boton3:active {
-  background-color: rgb(232, 241, 61);
+  background-color: rgb(255, 205, 25);
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
@@ -97,7 +103,7 @@ h1{
 }
 
 #boton4:active {
-  background-color: rgb(18, 255, 105);
+  background-color: rgb(16, 182, 57);
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
@@ -118,6 +124,13 @@ h1{
   justify-content: center;
   align-items: center;   
 }
+#container1{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;   
+  gap:5%
+}
 
 #container2{
   display: flex;
@@ -126,3 +139,4 @@ h1{
   align-items: center;   
   margin-top: 5%;
 }
+
