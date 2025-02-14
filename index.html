@@ -17,12 +17,12 @@
 
  
 
-    <div id="container">
-      <div id="container1">
+<div id="container">
+    <div id="container1">
 
         <button id="startb" class="thing" onclick="setTimeout(() => { showB(); },500);  playSound(4);" >Start!</button>
         <button id="rankb"  class="thing" onclick="showB();" >Ranking c:</button>
-      </div>
+    </div>
 
     <div id="box1">   
         <button id="boton1" onclick="playSound(0);">
@@ -52,9 +52,9 @@ function playSound(num){
     var use= num+1
     const audio = new Audio(srcArr[num]);
     audio.play();
-    ClickInput = num;
-    const boton = document.getElementById("boton"+use)
-    applyActiveStyle(boton)
+    var ClickInput = num;
+    const boton = document.getElementById("boton"+use);
+//    applyActiveStyle(boton);
 }
 
 function start (){
@@ -80,12 +80,16 @@ function game (PName, HPoints, PPoints, LNums, gameTF){
           }
           for (i = 0; i < LNums.length; i++){
             num = LNums[i];
-            //esperar a que sea presionado el boton
-            if (num != ClickInput){
-                gameTF=false;
-            }else{
-                PPoints +=10;
-            }
+            setTimeout(function(){window.alert("nums " + LNums)},500);
+            var box = document.getElementById("container");
+            box.addEventListener("click", function compare(num, ClickInput){
+                if (num != ClickInput){
+                    gameTF=false;
+                }else{
+                    PPoints +=10;
+                }
+            });
+            box.removeEventListener("click", compare);
           }
     }
 }
