@@ -35,69 +35,73 @@ h1{
   display: none;
 }
 
-#boton1{
+#boton0{
   background-color: rgb(255, 70, 70);
   border-top-left-radius: 100%;
+
   
 }
 
-#boton1:hover{
+#boton0:hover{
   background-color: rgb(241, 29, 29);  
 }
 
-#boton1:active {
+#boton0:active {
   background-color: rgb(233, 7, 7);  
   box-shadow: 0 5px #353535;
   transform: translateY(4px);
 }
 
-#boton2{
+#boton1{
   background-color: rgb(99, 206, 255);
   border-top-right-radius: 100%;
 
 }
 
-#boton2:hover{
+#boton1:hover{
   background-color: rgb(48, 180, 241);
 
 }
 
-#boton2:active {
+#boton1:active {
   background-color: rgb(48, 93, 241);
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+#boton2{
+  background-color: rgb(59, 255, 131);
+  border-bottom-left-radius: 100%;
+
+}
+
+#boton2:hover{
+  background-color: rgb(18, 255, 105);
+
+}
+
+#boton2:active {
+  background-color: rgb(16, 182, 57);
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
 
 #boton3{
   background-color: rgb(247, 255, 100);
-  border-bottom-left-radius: 100%;
+
+  border-bottom-right-radius: 100%;
 
 }
 
 #boton3:hover{
   background-color: rgb(232, 241, 61);
 
+
 }
 
 #boton3:active {
   background-color: rgb(255, 205, 25);
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
-}
 
-#boton4{
-  background-color: rgb(59, 255, 131);
-  border-bottom-right-radius: 100%;
-
-}
-
-#boton4:hover{
-  background-color: rgb(18, 255, 105);
-
-}
-
-#boton4:active {
-  background-color: rgb(16, 182, 57);
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
@@ -133,4 +137,21 @@ h1{
   align-items: center;   
   margin-top: 5%;
 }
+
+#boton1.chosen{
+  filter: drop-shadow(30px -10px 10px #6854ff);
+}
+
+#boton2.chosen{
+  filter: drop-shadow(-30px 10px 10px #1ebc1e);
+}
+
+#boton3.chosen{
+  filter: drop-shadow(30px 10px 10px #edc71f);
+}
+
+#boton0.chosen{
+  filter: drop-shadow(-30px -10px 10px #ff2525);
+}
+
 
