@@ -44,7 +44,7 @@
 </div>
 
 <script type="text/javascript">
-
+const boton = document.querySelectorAll(".boton");
 const srcArr = ['sounds/drop.mp3', 'sounds/anvil.mp3', 'sounds/lego.mp3', 'sounds/duolingo.mp3', 'sounds/yoshi.mp3', 'sounds/rickroll.mp3'];
 
 
@@ -52,9 +52,8 @@ function playSound(num){
     var use= num+1
     const audio = new Audio(srcArr[num]);
     audio.play();
-    var ClickInput = num;
+    ClickInput = num;
     const boton = document.getElementById("boton"+use);
-//    applyActiveStyle(boton);
 }
 
 function start (){
@@ -66,7 +65,17 @@ function start (){
     game(PName, HPoints, PPoints, LNums, gameTF)
 }
 
-function game (PName, HPoints, PPoints, LNums, gameTF){
+function compare(evento) {
+    window.alert("llego");
+    if (num != ClickInput){
+        gameTF=false;
+    }else{
+        PPoints +=10;
+    }
+    return (PPoints,gameTF);
+}
+
+async function game (PName, HPoints, PPoints, LNums, gameTF){
     while (gameTF==true){
           RNum = Math.floor(Math.random() *4);
           LNums.push(RNum);
@@ -75,24 +84,14 @@ function game (PName, HPoints, PPoints, LNums, gameTF){
             if (i == 0){
                 playSound(num);
             }else{
-                setTimeout(() => {playSound(num);},800);
+                setTimeout(playSound(num),800);   
             }
           }
           for (i = 0; i < LNums.length; i++){
             num = LNums[i];
-            setTimeout(function(){window.alert("nums " + LNums)},500);
-            var box = document.getElementById("container");
-            box.addEventListener("click", compare);
-            box.removeEventListener("click", compare);
+            boton.onclick = compare();
+            window.alert("pepe " + LNums.length);
           }
-    }
-}
-   
-function compare(num, ClickInput){
-    if (num != ClickInput){
-        gameTF=false;
-    }else{
-        PPoints +=10;
     }
 }
 
