@@ -104,7 +104,6 @@ async function waitForClick() {
 
 }
 
-
 async function game (PName, HPoints, PPoints, LNums, gameTF){
     PPoints=0;
     const totalP=localStorage.getItem("HighScores");
@@ -118,20 +117,20 @@ async function game (PName, HPoints, PPoints, LNums, gameTF){
             num = LNums[i];
             allButtons = document.querySelectorAll('.boton');
             botones = Array.from(allButtons);
-            aja = botones[num];
+            xBoton = botones[num];
             if (i == 0){
                 if (PPoints == 0){
-                    aja.classList.add('chosen');     
+                    xBoton.classList.add('chosen');     
                     playSound(num);
                 }else{
-                    setTimeout(function(){aja.classList.add('chosen');playSound(num);},500)
+                    setTimeout(function(){xBoton.classList.add('chosen');playSound(num);},500)
                 }
             }else{
-                aja.classList.add('chosen');
+                xBoton.classList.add('chosen');
                 setTimeout(playSound(num),800);   
             }
             await new Promise(resolve => setTimeout(resolve, 800));
-            aja.classList.remove('chosen');
+            xBoton.classList.remove('chosen');
         }
         for (i = 0; i < LNums.length; i++){
             if (gameTF ==true){
@@ -152,14 +151,13 @@ async function game (PName, HPoints, PPoints, LNums, gameTF){
     if (HPoints < PPoints){
         HPoints = PPoints;
     }
-    window.alert(HPoints);
     const NewScore = {name:PName, score:PPoints};
     retrieved.push(NewScore);
     localStorage.setItem("HighScores", JSON.stringify(retrieved));
     sortLocalStorageByNumber("HighScores");
     setTimeout(function(){playSound(7)},800);
     setTimeout(function(){showB();gameOver()},1500);
-    }
+}
 
 function gameOver(){
     var x = document.getElementById("gameO");
@@ -167,74 +165,52 @@ function gameOver(){
 }
 
 function sortLocalStorageByNumber(key) {
-  const items = JSON.parse(localStorage.getItem(key)) || [];
-
-  items.sort((a, b) => {
-    const numA = parseFloat(a.score); 
-    const numB = parseFloat(b.score); 
-
-
-    return numB - numA; 
-  });
-
-  localStorage.setItem(key, JSON.stringify(items)); 
+    const items = JSON.parse(localStorage.getItem(key)) || [];
+    items.sort((a, b) => {
+        const numA = parseFloat(a.score); 
+        const numB = parseFloat(b.score); 
+        return numB - numA; 
+    });
+    localStorage.setItem(key, JSON.stringify(items)); 
 }
 
 function showB() {
-  var x = document.getElementById("box1");
-  var y = document.getElementById("box2");
-  var z = document.getElementById("startb");
-  var q = document.getElementById("rankb");
-  var e = document.getElementById("nombreInput");
-  var j =document.getElementById("score");
-  var p = document.getElementById("gameO");
-  var m = document.getElementById("lista");
-  var r = document.getElementById("giveUp");
-
-
-
-  if (z.style.display !== "none") {
-    x.style.display = "flex";
-    y.style.display = "flex";
-    z.style.display = "none";
-    q.style.display = "none";
-    e.style.display = "none";
-    j.style.display= "flex";
-    j.textContent=0;
-    p.style.display="none";
-    m.style.display="none";
-    // r.style.display="none";
-
-    
-
-    setTimeout(function(){start()},1500);
-
-  } else {
-    x.style.display = "none";
-    y.style.display = "none";
-    z.style.display = "flex";
-    q.style.display = "flex";
-    e.style.display = "flex";
-    j.style.display= "none";
-    p.style.display="none";
-    m.style.display="none";
-    // r.style.display="none";
-
-
-
-
-
+    var x = document.getElementById("box1");
+    var y = document.getElementById("box2");
+    var z = document.getElementById("startb");
+    var q = document.getElementById("rankb");
+    var e = document.getElementById("nombreInput");
+    var j =document.getElementById("score");
+    var p = document.getElementById("gameO");
+    var m = document.getElementById("lista");
+    var r = document.getElementById("giveUp");
+    if (z.style.display !== "none") {
+        x.style.display = "flex";
+        y.style.display = "flex";
+        z.style.display = "none";
+        q.style.display = "none";
+        e.style.display = "none";
+        j.style.display= "flex";
+        j.textContent=0;
+        p.style.display="none";
+        m.style.display="none"; 
+        setTimeout(function(){start()},1500);
+    } else {
+        x.style.display = "none";
+        y.style.display = "none";
+        z.style.display = "flex";
+        q.style.display = "flex";
+        e.style.display = "flex";
+        j.style.display= "none";
+        p.style.display="none";
+        m.style.display="none";
   }
-  
 }
-
-
 
 function allStorage() {
     sortLocalStorageByNumber("HighScores");
     const totalP=localStorage.getItem("HighScores");
     const highScores = totalP ? JSON.parse(totalP): [];
-    window.alert(JSON.stringify(highScores));
     const ranking = document.getElementById("lista");
     ranking.innerHTML = "";
     if (highScores.length === 0) {
@@ -252,15 +228,13 @@ function allStorage() {
 }
 
 function rank() {
-  var x = document.getElementById("box1");
-  var y = document.getElementById("box2");
-  var z = document.getElementById("startb");
-  var q = document.getElementById("rankb");
-  var e = document.getElementById("nombreInput"); 
-  var p = document.getElementById("lista");
-  var r = document.getElementById("giveUp");
-
-
+    var x = document.getElementById("box1");
+    var y = document.getElementById("box2");
+    var z = document.getElementById("startb");
+    var q = document.getElementById("rankb");
+    var e = document.getElementById("nombreInput"); 
+    var p = document.getElementById("lista");
+    var r = document.getElementById("giveUp");
     x.style.display = "none";
     y.style.display = "none";
     z.style.display = "none";
@@ -268,9 +242,9 @@ function rank() {
     e.style.display = "none";
     p.style.display = "flex";
     r.style.display= "flex";
-
     allStorage();
 }
+
 </script>
 
 </body>
