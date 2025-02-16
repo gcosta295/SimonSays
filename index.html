@@ -15,13 +15,12 @@
 
 
 
- 
 
 <div id="container">
     <div id="container1">
 
         <button id="startb" class="thing" onclick="setTimeout(() => { showB(); },500);  playSound(4);" >Start!</button>
-        <button id="rankb"  class="thing" onclick="showB();" >Ranking c:</button>
+        <button id="rankb"  class="thing" onclick="rank(); playSound(6)" >Ranking c:</button>
         <input type="text" id="nombreInput" placeholder="Tu nombre aquí">
     </div>
 
@@ -40,14 +39,12 @@
 
 <div id="container2">
     <button id="giveUp" class="thing" onclick="showB(); playSound(5);" >Give Up? :c</button>
-
-
 </div>
 
 <script type="text/javascript">
+    
 const boton = document.querySelectorAll(".boton");
-const srcArr = ['sounds/drop.mp3', 'sounds/anvil.mp3', 'sounds/duolingo.mp3','sounds/lego.mp3', 'sounds/yoshi.mp3', 'sounds/rickroll.mp3', 'sounds/xp', 'sounds/fail'];
-
+const srcArr = ['sounds/drop.mp3', 'sounds/anvil.mp3', 'sounds/duolingo.mp3','sounds/lego.mp3', 'sounds/yoshi.mp3', 'sounds/rickroll.mp3', 'sounds/xp.mp3', 'sounds/fail.mp3'];
 
 function playSound(num){
     var use= num+1
@@ -58,7 +55,7 @@ function playSound(num){
 }
 
 function start (){
-    PName = document.getElementById("nombreInput");
+    PName = document.getElementById("nombreInput").value;
     HPoints = 0;
     PPoints = 0;
     const LNums = [];
@@ -96,9 +93,9 @@ async function waitForClick() {
 
 async function game (PName, HPoints, PPoints, LNums, gameTF){
     while (gameTF==true){
-          RNum = Math.floor(Math.random() *4);
-          LNums.push(RNum);
-          for (i = 0; i < LNums.length; i++){
+        RNum = Math.floor(Math.random() *4);
+        LNums.push(RNum);
+        for (i = 0; i < LNums.length; i++){
             num = LNums[i];
             allButtons = document.querySelectorAll('.boton');
             botones = Array.from(allButtons);
@@ -112,25 +109,24 @@ async function game (PName, HPoints, PPoints, LNums, gameTF){
             }
             await new Promise(resolve => setTimeout(resolve, 800));
             aja.classList.remove('chosen');
-          }
-          for (i = 0; i < LNums.length; i++){
+        }
+        for (i = 0; i < LNums.length; i++){
             num = LNums[i];
             buttonIndex = await waitForClick();
             botonpresionado=buttonIndex;
             await new Promise(resolve => setTimeout(resolve, 200));
             clickedButtons = document.querySelectorAll('.myButton');
-            clickedButtons.forEach(button => {
-                button.classList.remove('active');
-            });
+            clickedButtons.forEach(button => {button.classList.remove('active');});
             gameTF=compare(botonpresionado,num);
         }
     }
-    if (gameTF == false){
-        const audio = new Audio(srcArr[6]);//fix
-        audio.play();
-        setTimeout(function(){showB()},1500);
+    if (HPoints < PPoints){
+        HPoints = PPoints;
     }
-}
+    window.alert(HPoints);
+    setTimeout(function(){playSound(7)},800);
+    setTimeout(function(){showB()},1500);
+    }
 
 function showB() {
   var x = document.getElementById("box1");
@@ -140,7 +136,6 @@ function showB() {
   var w = document.getElementById("giveUp");
   var e = document.getElementById("nombreInput");
 
-
   if (z.style.display !== "none") {
     x.style.display = "flex";
     y.style.display = "flex";
@@ -149,7 +144,6 @@ function showB() {
     e.style.display = "none";
     w.style.display = "flex";
     setTimeout(function(){start()},1500);
-
   } else {
     x.style.display = "none";
     y.style.display = "none";
@@ -157,11 +151,24 @@ function showB() {
     q.style.display = "flex";
     e.style.display = "flex";
     w.style.display = "none";
-
-
   }
 }
 
+function rank() {
+  var x = document.getElementById("box1");
+  var y = document.getElementById("box2");
+  var z = document.getElementById("startb");
+  var q = document.getElementById("rankb");
+  var w = document.getElementById("giveUp");
+  var e = document.getElementById("nombreInput"); 
+    x.style.display = "none";
+    y.style.display = "none";
+    z.style.display = "none";
+    q.style.display = "none";
+    e.style.display = "none";
+    w.style.display = "none";
+    setTimeout(function(){showB()},3000);
+}
 </script>
 
 </body>
