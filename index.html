@@ -46,10 +46,6 @@
     </div>
 </div>
 
-<div id="container2">
-    <button id="giveUp" class="thing" onclick="showB(); playSound(5);" >Give Up? :c</button>
-</div>
-
 <script type="text/javascript">
     
 const boton = document.querySelectorAll(".boton");
@@ -157,7 +153,6 @@ function showB() {
   var y = document.getElementById("box2");
   var z = document.getElementById("startb");
   var q = document.getElementById("rankb");
-  var w = document.getElementById("giveUp");
   var e = document.getElementById("nombreInput");
   var j =document.getElementById("score");
   var p = document.getElementById("gameO");
@@ -170,7 +165,6 @@ function showB() {
         z.style.display = "none";
         q.style.display = "none";
         e.style.display = "none";
-        w.style.display = "flex";
         j.style.display= "flex";
         j.textContent=0;
         p.style.display="none";
@@ -182,13 +176,10 @@ function showB() {
     z.style.display = "flex";
     q.style.display = "flex";
     e.style.display = "flex";
-    w.style.display = "none";
     j.style.display= "none";
     p.style.display="none";
-
-
-
   }
+  
 }
 
 function rank() {
@@ -196,14 +187,12 @@ function rank() {
   var y = document.getElementById("box2");
   var z = document.getElementById("startb");
   var q = document.getElementById("rankb");
-  var w = document.getElementById("giveUp");
   var e = document.getElementById("nombreInput"); 
     x.style.display = "none";
     y.style.display = "none";
     z.style.display = "none";
     q.style.display = "none";
     e.style.display = "none";
-    w.style.display = "none";
     setTimeout(function(){showB()},3000);
 }
 </script>
