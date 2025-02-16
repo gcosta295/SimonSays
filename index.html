@@ -70,7 +70,7 @@ function compare(botonpresionado,num) {
         gameTF=false;
 
     }else{
-        // PPoints +=10;
+        PPoints +=10;
     }
     return (gameTF);
 }
@@ -78,14 +78,13 @@ function compare(botonpresionado,num) {
 async function waitForClick() {
     return new Promise(resolve => {
         const clickHandler = (event) => {
-            if (event.target.classList.contains('boton')) { // Check if it's one of your buttons
+            if (event.target.classList.contains('boton')) { 
                 const clickedButton = event.target;
-                const buttonId = clickedButton.id; // Or use clickedButton.textContent, etc.
-                const allButtons = document.querySelectorAll('.boton'); // Get all buttons
-                const buttonIndex = Array.from(allButtons).indexOf(clickedButton); //Get the index of the button clicked
-                
-                resolve(buttonIndex); // Or resolve(buttonIndex);
-                boton.forEach(b => b.removeEventListener('click', clickHandler)); //Remove the listener after the click
+                const buttonId = clickedButton.id; 
+                const allButtons = document.querySelectorAll('.boton'); 
+                const buttonIndex = Array.from(allButtons).indexOf(clickedButton); 
+                resolve(buttonIndex); 
+                boton.forEach(b => b.removeEventListener('click', clickHandler)); 
             }
         };
         boton.forEach(b => b.addEventListener('click', clickHandler));
@@ -100,40 +99,35 @@ async function game (PName, HPoints, PPoints, LNums, gameTF){
           LNums.push(RNum);
           for (i = 0; i < LNums.length; i++){
             num = LNums[i];
-            const allButtons = document.querySelectorAll('.boton');
-            const botones = Array.from(allButtons); //Get the index of the button clicked
-
-            const aja = botones[num];
-            
+            allButtons = document.querySelectorAll('.boton');
+            botones = Array.from(allButtons);
+            aja = botones[num];
             if (i == 0){
-                
                 aja.classList.add('chosen');     
                 playSound(num);
             }else{
-                aja.classList.add('chosen');     
-
+                aja.classList.add('chosen');
                 setTimeout(playSound(num),800);   
             }
             await new Promise(resolve => setTimeout(resolve, 800));
             aja.classList.remove('chosen');
-            // aja.classList.remove('chosen');
-
           }
           for (i = 0; i < LNums.length; i++){
             num = LNums[i];
-            const buttonIndex = await waitForClick();
-            const botonpresionado=buttonIndex;
-            await new Promise(resolve => setTimeout(resolve, 800));
-            const clickedButtons = document.querySelectorAll('.myButton');
-             clickedButtons.forEach(button => {
+            buttonIndex = await waitForClick();
+            botonpresionado=buttonIndex;
+            await new Promise(resolve => setTimeout(resolve, 200));
+            clickedButtons = document.querySelectorAll('.myButton');
+            clickedButtons.forEach(button => {
                 button.classList.remove('active');
             });
             gameTF=compare(botonpresionado,num);
-            if (gameTF==false){
-                playSound(7);
-            }
-            
-          }
+        }
+    }
+    if (gameTF == false){
+        const audio = new Audio(srcArr[6]);//fix
+        audio.play();
+        setTimeout(function(){showB()},1500);
     }
 }
 
