@@ -146,8 +146,6 @@ async function game (PName, HPoints, PPoints, LNums, gameTF){
     window.alert(HPoints);
     setTimeout(function(){playSound(7)},800);
     setTimeout(function(){showB();gameOver()},1500);
-    
-    gameOver();
     }
 
 function gameOver(){
@@ -166,17 +164,18 @@ function showB() {
 
 
   if (z.style.display !== "none") {
-    x.style.display = "flex";
-    y.style.display = "flex";
-    z.style.display = "none";
-    q.style.display = "none";
-    e.style.display = "none";
-    w.style.display = "flex";
-    j.style.display= "flex";
-    j.textContent=0;
-    p.style.display="none";
-
-    setTimeout(function(){start()},1500);
+    if (e.value!=""){
+        x.style.display = "flex";
+        y.style.display = "flex";
+        z.style.display = "none";
+        q.style.display = "none";
+        e.style.display = "none";
+        w.style.display = "flex";
+        j.style.display= "flex";
+        j.textContent=0;
+        p.style.display="none";
+        setTimeout(function(){start()},1500);
+    }
   } else {
     x.style.display = "none";
     y.style.display = "none";
