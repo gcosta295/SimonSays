@@ -22,6 +22,7 @@
 
         <button id="startb" class="thing" onclick="setTimeout(() => { showB(); },500);  playSound(4);" >Start!</button>
         <button id="rankb"  class="thing" onclick="showB();" >Ranking c:</button>
+        <input type="text" id="nombreInput" placeholder="Tu nombre aquí">
     </div>
 
     <div id="box1">   
@@ -57,7 +58,7 @@ function playSound(num){
 }
 
 function start (){
-    PName = "input"
+    PName = document.getElementById("nombreInput");
     HPoints = 0;
     PPoints = 0;
     const LNums = [];
@@ -136,8 +137,8 @@ function showB() {
   var y = document.getElementById("box2");
   var z = document.getElementById("startb");
   var q = document.getElementById("rankb");
-
   var w = document.getElementById("giveUp");
+  var e = document.getElementById("nombreInput");
 
 
   if (z.style.display !== "none") {
@@ -145,6 +146,7 @@ function showB() {
     y.style.display = "flex";
     z.style.display = "none";
     q.style.display = "none";
+    e.style.display = "none";
     w.style.display = "flex";
     setTimeout(function(){start()},1500);
 
@@ -153,7 +155,7 @@ function showB() {
     y.style.display = "none";
     z.style.display = "flex";
     q.style.display = "flex";
-
+    e.style.display = "flex";
     w.style.display = "none";
 
 
