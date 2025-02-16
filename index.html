@@ -17,6 +17,14 @@
 
 
 <div id="container">
+    <div id="containerS">
+        <h1 id="score">
+            <span class="textbox">prueba</span>
+        </h1>
+        <h1 id="gameO">
+            <span class="textbox2">GAME OVER</span>
+        </h1>
+    </div>
     <div id="container1">
 
         <button id="startb" class="thing" onclick="setTimeout(() => { showB(); },500);  playSound(4);" >Start!</button>
@@ -45,6 +53,7 @@
     
 const boton = document.querySelectorAll(".boton");
 const srcArr = ['sounds/drop.mp3', 'sounds/anvil.mp3', 'sounds/duolingo.mp3','sounds/lego.mp3', 'sounds/yoshi.mp3', 'sounds/rickroll.mp3', 'sounds/xp.mp3', 'sounds/fail.mp3'];
+var HPoints=0;
 
 function playSound(num){
     var use= num+1
@@ -66,9 +75,6 @@ function start (){
 function compare(botonpresionado,num) {
     if (num != botonpresionado){
         gameTF=false;
-
-    }else{
-        PPoints +=10;
     }
     return (gameTF);
 }
@@ -92,7 +98,10 @@ async function waitForClick() {
 
 
 async function game (PName, HPoints, PPoints, LNums, gameTF){
+    PPoints=0;
+    const Points = document.getElementById("score")
     while (gameTF==true){
+        Points.textContent=PPoints;
         RNum = Math.floor(Math.random() *4);
         LNums.push(RNum);
         for (i = 0; i < LNums.length; i++){
@@ -101,8 +110,12 @@ async function game (PName, HPoints, PPoints, LNums, gameTF){
             botones = Array.from(allButtons);
             aja = botones[num];
             if (i == 0){
-                aja.classList.add('chosen');     
-                playSound(num);
+                if (PPoints == 0){
+                    aja.classList.add('chosen');     
+                    playSound(num);
+                }else{
+                    setTimeout(function(){aja.classList.add('chosen');playSound(num);},500)
+                }
             }else{
                 aja.classList.add('chosen');
                 setTimeout(playSound(num),800);   
@@ -111,23 +124,35 @@ async function game (PName, HPoints, PPoints, LNums, gameTF){
             aja.classList.remove('chosen');
         }
         for (i = 0; i < LNums.length; i++){
-            num = LNums[i];
-            buttonIndex = await waitForClick();
-            botonpresionado=buttonIndex;
-            await new Promise(resolve => setTimeout(resolve, 200));
-            clickedButtons = document.querySelectorAll('.myButton');
-            clickedButtons.forEach(button => {button.classList.remove('active');});
-            gameTF=compare(botonpresionado,num);
+            if (gameTF ==true){
+                num = LNums[i];
+                buttonIndex = await waitForClick();
+                botonpresionado=buttonIndex;
+                await new Promise(resolve => setTimeout(resolve, 200));
+                clickedButtons = document.querySelectorAll('.myButton');
+                clickedButtons.forEach(button => {button.classList.remove('active');});   
+                gameTF=compare(botonpresionado,num);
+                if (gameTF == true){
+                    PPoints += 10;
+                }
+            }
         }
+        
     }
     if (HPoints < PPoints){
         HPoints = PPoints;
     }
     window.alert(HPoints);
     setTimeout(function(){playSound(7)},800);
-    setTimeout(function(){showB()},1500);
+    setTimeout(function(){showB();gameOver()},1500);
+    
+    gameOver();
     }
 
+function gameOver(){
+    var x = document.getElementById("gameO");
+    x.style.display="flex";
+}
 function showB() {
   var x = document.getElementById("box1");
   var y = document.getElementById("box2");
@@ -135,6 +160,9 @@ function showB() {
   var q = document.getElementById("rankb");
   var w = document.getElementById("giveUp");
   var e = document.getElementById("nombreInput");
+  var j =document.getElementById("score");
+  var p = document.getElementById("gameO");
+
 
   if (z.style.display !== "none") {
     x.style.display = "flex";
@@ -143,6 +171,10 @@ function showB() {
     q.style.display = "none";
     e.style.display = "none";
     w.style.display = "flex";
+    j.style.display= "flex";
+    j.textContent=0;
+    // p.style.display="none";
+
     setTimeout(function(){start()},1500);
   } else {
     x.style.display = "none";
@@ -151,6 +183,11 @@ function showB() {
     q.style.display = "flex";
     e.style.display = "flex";
     w.style.display = "none";
+    j.style.display= "none";
+    // p.style.display="none";
+
+
+
   }
 }
 
