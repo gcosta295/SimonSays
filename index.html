@@ -47,7 +47,7 @@
 </div>
 
 <div id="container2">
-    <button id="giveUp" class="thing" onclick="showB(); playSound(5);" >Give Up? :c</button>
+    <button id="giveUp" class="thing" onclick="showB();">Return</button>
     <ol id="lista">
     
     </ol>
@@ -189,6 +189,7 @@ function showB() {
   var j =document.getElementById("score");
   var p = document.getElementById("gameO");
   var m = document.getElementById("lista");
+  var r = document.getElementById("giveUp");
 
 
 
@@ -202,10 +203,12 @@ function showB() {
     j.textContent=0;
     p.style.display="none";
     m.style.display="none";
+    // r.style.display="none";
 
     
 
     setTimeout(function(){start()},1500);
+
   } else {
     x.style.display = "none";
     y.style.display = "none";
@@ -215,6 +218,8 @@ function showB() {
     j.style.display= "none";
     p.style.display="none";
     m.style.display="none";
+    // r.style.display="none";
+
 
 
 
@@ -253,6 +258,8 @@ function rank() {
   var q = document.getElementById("rankb");
   var e = document.getElementById("nombreInput"); 
   var p = document.getElementById("lista");
+  var r = document.getElementById("giveUp");
+
 
     x.style.display = "none";
     y.style.display = "none";
@@ -260,8 +267,8 @@ function rank() {
     q.style.display = "none";
     e.style.display = "none";
     p.style.display = "flex";
+    r.style.display= "flex";
 
-    setTimeout(function(){showB()},3000);
     allStorage();
 }
 </script>
