@@ -159,8 +159,6 @@ async function game (PName, HPoints, PPoints, LNums, gameTF){
     sortLocalStorageByNumber("HighScores");
     setTimeout(function(){playSound(7)},800);
     setTimeout(function(){showB();gameOver()},1500);
-    
-    gameOver();
     }
 
 function gameOver(){
@@ -187,7 +185,6 @@ function showB() {
   var y = document.getElementById("box2");
   var z = document.getElementById("startb");
   var q = document.getElementById("rankb");
-  var w = document.getElementById("giveUp");
   var e = document.getElementById("nombreInput");
   var j =document.getElementById("score");
   var p = document.getElementById("gameO");
@@ -201,7 +198,6 @@ function showB() {
     z.style.display = "none";
     q.style.display = "none";
     e.style.display = "none";
-    w.style.display = "flex";
     j.style.display= "flex";
     j.textContent=0;
     p.style.display="none";
@@ -216,7 +212,6 @@ function showB() {
     z.style.display = "flex";
     q.style.display = "flex";
     e.style.display = "flex";
-    w.style.display = "none";
     j.style.display= "none";
     p.style.display="none";
     m.style.display="none";
@@ -225,6 +220,7 @@ function showB() {
 
 
   }
+  
 }
 
 
@@ -255,7 +251,6 @@ function rank() {
   var y = document.getElementById("box2");
   var z = document.getElementById("startb");
   var q = document.getElementById("rankb");
-  var w = document.getElementById("giveUp");
   var e = document.getElementById("nombreInput"); 
   var p = document.getElementById("lista");
 
@@ -264,7 +259,6 @@ function rank() {
     z.style.display = "none";
     q.style.display = "none";
     e.style.display = "none";
-    w.style.display = "none";
     p.style.display = "flex";
 
     setTimeout(function(){showB()},3000);

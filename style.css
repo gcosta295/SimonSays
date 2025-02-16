@@ -31,10 +31,6 @@ h1{
   background-color: rgb(106, 72, 218);
 }
 
-#giveUp{
-  display: none;
-}
-
 #boton0{
   background-color: rgb(255, 70, 70);
   border-top-left-radius: 100%;
@@ -128,14 +124,6 @@ h1{
   justify-content: center;
   align-items: center;   
   gap:5%
-}
-
-#container2{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;   
-  margin-top: 5%;
 }
 
 #boton1.chosen{
