@@ -48,14 +48,21 @@
 
 <div id="container2">
     <button id="giveUp" class="thing" onclick="showB(); playSound(5);" >Give Up? :c</button>
+    <ol id="lista">
+    
+    </ol>
 </div>
+
+
 
 <script type="text/javascript">
     
 const boton = document.querySelectorAll(".boton");
 const srcArr = ['sounds/drop.mp3', 'sounds/anvil.mp3', 'sounds/duolingo.mp3','sounds/lego.mp3', 'sounds/yoshi.mp3', 'sounds/rickroll.mp3', 'sounds/xp.mp3', 'sounds/fail.mp3'];
 var HPoints=0;
-
+var PName="";
+const HighScores=[];
+localStorage.setItem("HighScores", JSON.stringify(HighScores));
 function playSound(num){
     var use= num+1
     const audio = new Audio(srcArr[num]);
@@ -100,6 +107,8 @@ async function waitForClick() {
 
 async function game (PName, HPoints, PPoints, LNums, gameTF){
     PPoints=0;
+    const totalP=localStorage.getItem("HighScores");
+    const retrieved = JSON.parse(totalP);
     const Points = document.getElementById("score")
     while (gameTF==true){
         Points.textContent=PPoints;
@@ -144,6 +153,10 @@ async function game (PName, HPoints, PPoints, LNums, gameTF){
         HPoints = PPoints;
     }
     window.alert(HPoints);
+    const NewScore = {name:PName, score:PPoints};
+    retrieved.push(NewScore);
+    localStorage.setItem("HighScores", JSON.stringify(retrieved));
+    sortLocalStorageByNumber("HighScores");
     setTimeout(function(){playSound(7)},800);
     setTimeout(function(){showB();gameOver()},1500);
     
@@ -154,6 +167,21 @@ function gameOver(){
     var x = document.getElementById("gameO");
     x.style.display="flex";
 }
+
+function sortLocalStorageByNumber(key) {
+  const items = JSON.parse(localStorage.getItem(key)) || [];
+
+  items.sort((a, b) => {
+    const numA = parseFloat(a.score); 
+    const numB = parseFloat(b.score); 
+
+
+    return numB - numA; 
+  });
+
+  localStorage.setItem(key, JSON.stringify(items)); 
+}
+
 function showB() {
   var x = document.getElementById("box1");
   var y = document.getElementById("box2");
@@ -163,6 +191,8 @@ function showB() {
   var e = document.getElementById("nombreInput");
   var j =document.getElementById("score");
   var p = document.getElementById("gameO");
+  var m = document.getElementById("lista");
+
 
 
   if (z.style.display !== "none") {
@@ -175,6 +205,9 @@ function showB() {
     j.style.display= "flex";
     j.textContent=0;
     p.style.display="none";
+    m.style.display="none";
+
+    
 
     setTimeout(function(){start()},1500);
   } else {
@@ -186,10 +219,35 @@ function showB() {
     w.style.display = "none";
     j.style.display= "none";
     p.style.display="none";
+    m.style.display="none";
+
 
 
 
   }
+}
+
+
+
+function allStorage() {
+    sortLocalStorageByNumber("HighScores");
+    const totalP=localStorage.getItem("HighScores");
+    const highScores = totalP ? JSON.parse(totalP): [];
+    window.alert(JSON.stringify(highScores));
+    const ranking = document.getElementById("lista");
+    ranking.innerHTML = "";
+    if (highScores.length === 0) {
+        const noScoresMessage = document.createElement("li");
+        noScoresMessage.textContent = "No high scores yet!";
+        ranking.appendChild(noScoresMessage);
+        return; 
+    }
+        highScores.forEach(scores => {
+        const listItem = document.createElement("li");
+        listItem.textContent = `${scores.name}: ${scores.score}`;
+        ranking.appendChild(listItem);
+    });
+    
 }
 
 function rank() {
@@ -199,13 +257,18 @@ function rank() {
   var q = document.getElementById("rankb");
   var w = document.getElementById("giveUp");
   var e = document.getElementById("nombreInput"); 
+  var p = document.getElementById("lista");
+
     x.style.display = "none";
     y.style.display = "none";
     z.style.display = "none";
     q.style.display = "none";
     e.style.display = "none";
     w.style.display = "none";
+    p.style.display = "flex";
+
     setTimeout(function(){showB()},3000);
+    allStorage();
 }
 </script>
 
